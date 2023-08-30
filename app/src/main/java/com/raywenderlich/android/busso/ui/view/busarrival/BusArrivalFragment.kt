@@ -41,14 +41,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.raywenderlich.android.busso.R
-import com.raywenderlich.android.busso.di.injectors.BusArrivalFragmentInjector
+import com.raywenderlich.android.busso.ui.view.main.comp
+import javax.inject.Inject
 
 /**
  * The Fragment for displaying the arrival time
  */
 class BusArrivalFragment : Fragment() {
 
+  @Inject
   lateinit var busArrivalViewBinder: BusArrivalViewBinder
+  @Inject
   lateinit var busArrivalPresenter: BusArrivalPresenter
 
   companion object {
@@ -56,7 +59,7 @@ class BusArrivalFragment : Fragment() {
   }
 
   override fun onAttach(context: Context) {
-    BusArrivalFragmentInjector.inject(this)
+    context.comp?.inject(this)
     super.onAttach(context)
   }
 

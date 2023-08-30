@@ -41,18 +41,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.raywenderlich.android.busso.R
-import com.raywenderlich.android.busso.di.injectors.BusStopFragmentInjector
+import com.raywenderlich.android.busso.ui.view.main.comp
+import javax.inject.Inject
 
 /**
  * The Fragment which displays the list of BusStop close to the
  */
 class BusStopFragment : Fragment() {
 
+  @Inject
   lateinit var busStopListViewBinder: BusStopListViewBinder
+  @Inject
   lateinit var busStopListPresenter: BusStopListPresenter
 
+
+
   override fun onAttach(context: Context) {
-    BusStopFragmentInjector.inject(this)
+    context.comp?.inject(this)
     super.onAttach(context)
   }
 

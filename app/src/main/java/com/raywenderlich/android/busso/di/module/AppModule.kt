@@ -5,6 +5,10 @@ import android.content.Context
 import android.location.Location
 import android.location.LocationManager
 import com.raywenderlich.android.busso.permission.GeoLocationPermissionCheckerImpl
+import com.raywenderlich.android.busso.ui.view.busstop.BusStopListPresenter
+import com.raywenderlich.android.busso.ui.view.busstop.BusStopListPresenterImpl
+import com.raywenderlich.android.busso.ui.view.busstop.BusStopListViewBinder
+import com.raywenderlich.android.busso.ui.view.busstop.BusStopListViewBinderImpl
 import com.raywenderlich.android.busso.ui.view.main.MainPresenter
 import com.raywenderlich.android.busso.ui.view.main.MainPresenterImpl
 import com.raywenderlich.android.busso.ui.view.splash.SplashPresenter
@@ -50,6 +54,13 @@ class AppModule(private val activity: Activity) {
 
         @Binds
         fun bindMainPresenter(impl: MainPresenterImpl): MainPresenter
+
+        @Binds
+        fun bindBusStopListViewBinder(impl: BusStopListViewBinderImpl): BusStopListViewBinder
+        @Binds
+        fun bindBusStopListPresenter(impl: BusStopListPresenterImpl): BusStopListPresenter
+        @Binds
+        fun bindBusStopListViewBinderListener(impl: BusStopListPresenterImpl): BusStopListViewBinder.BusStopItemSelectedListener
 
 
     }

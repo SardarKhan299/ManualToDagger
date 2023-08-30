@@ -40,6 +40,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.busso.R
 import com.raywenderlich.android.busso.di.component.DaggerAppComponent
 import com.raywenderlich.android.busso.di.module.AppModule
+import com.raywenderlich.android.busso.di.module.NetworkModule
 import javax.inject.Inject
 
 /**
@@ -59,7 +60,7 @@ class SplashActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     makeFullScreen()
     setContentView(R.layout.activity_splash)
-    DaggerAppComponent.builder().appModule(AppModule(this)).build().inject(this)
+    DaggerAppComponent.builder().appModule(AppModule(this)).networkModule(NetworkModule(this)).build().inject(this)
     splashViewBinder.init(this)
   }
 

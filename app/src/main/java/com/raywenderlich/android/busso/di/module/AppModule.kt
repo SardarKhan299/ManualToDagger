@@ -29,10 +29,10 @@ import dagger.Provides
 import io.reactivex.Observable
 
 @Module(includes = [AppModule.Bindings::class])
-class AppModule(private val activity: Activity) {
+class AppModule {
 
     @Provides
-    fun getLocationObservable():Observable<LocationEvent>{
+    fun getLocationObservable(activity: Activity):Observable<LocationEvent>{
         // 3
         val locationManager = activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         // 4
@@ -42,7 +42,7 @@ class AppModule(private val activity: Activity) {
     }
 
     @Provides
-    fun getNavigatorObject():Navigator{
+    fun getNavigatorObject(activity: Activity):Navigator{
         return NavigatorImpl(activity)
     }
 

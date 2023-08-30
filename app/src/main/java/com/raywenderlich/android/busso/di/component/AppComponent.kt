@@ -15,14 +15,20 @@ import javax.inject.Singleton
 interface AppComponent {
 
     // 1
-    @Component.Builder
-    interface Builder {
-        fun appModule(appModule: AppModule): Builder
-        fun networkModule(networkModule: NetworkModule): Builder
-        @BindsInstance // 2
-        fun activity(activity: Activity): Builder
-        fun build(): AppComponent
+//    @Component.Builder
+//    interface Builder {
+//        fun appModule(appModule: AppModule): Builder
+//        fun networkModule(networkModule: NetworkModule): Builder
+//        @BindsInstance // 2
+//        fun activity(activity: Activity): Builder
+//        fun build(): AppComponent
+//
+//    }
 
+    @Component.Factory // 1
+    interface Factory {
+        // 2
+        fun create(@BindsInstance activity: Activity): AppComponent
     }
 
     fun inject(activity: Activity)

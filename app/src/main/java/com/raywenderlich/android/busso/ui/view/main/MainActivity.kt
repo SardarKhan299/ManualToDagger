@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    comp = DaggerAppComponent.builder().activity(this).build().apply {
+    comp = DaggerAppComponent.factory().create(this).apply {
       inject(this@MainActivity)
     }
     if (savedInstanceState == null) {
